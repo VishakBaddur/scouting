@@ -72,8 +72,15 @@ Options: `--concurrency`, `--min-interval`, `--no-browser`, `--proxy URL` (or `J
 
 `companies.yaml` entries need a `name` plus either a `url` (ATS auto-detected) or `ats` + `token`.
 
+## Scheduled runs
+
+A GitHub Actions workflow (`.github/workflows/crawl.yml`) crawls every company daily at 12:17 UTC. It restores the previous day's SQLite database from the Actions cache, so new / updated / closed jobs are tracked across days, and appends each run's metrics to [`RUNS.md`](RUNS.md).
+
+First run (Oct 14, 2026): 11/12 companies, 5,026 jobs, 121 requests, 73 seconds. Rotto's site blocked GitHub's data-center IPs (it allows residential traffic), so the circuit breaker stopped after 5 blocked requests instead of retrying.
+
 ## Known limitations / next steps
 
+- **Some sites block cloud IPs.** Scheduled runs from GitHub Actions are blocked by sites that reject data-center traffic (Rotto in the first run). The crawler detects this and stops; it doesn't try to evade a deliberate block.
 - **Workday caps pagination at ~2,000 results.** The fix is to split the query by Workday facets (location, job family) so each slice stays under the cap.
 - **Search is keyword-based (SQLite `LIKE`).** Next step is Postgres with full-text search plus `pgvector` embeddings for natural-language queries, tuned with `EXPLAIN ANALYZE` against latency and cost.
 - **No CAPTCHA solving or browser fingerprint spoofing.** The design avoids triggering defenses (APIs first, pacing, backoff) rather than defeating them.
