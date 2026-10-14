@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "17 12 * * *"   # 12:17 UTC daily (7:17 AM Chicago)
   workflow_dispatch:         # allows a manual "Run workflow" button
+  push:                      # also run when the company list or this workflow changes
+    branches: [main]
+    paths:
+      - companies.example.yaml
+      - .github/workflows/crawl.yml
 
 permissions:
   contents: write            # needed to commit RUNS.md
