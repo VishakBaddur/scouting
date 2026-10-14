@@ -1,0 +1,7 @@
+companies:
+  - name: Static Co
+    url: http://127.0.0.1:8765/static.html
+  - name: JS Co
+    url: http://127.0.0.1:8765/index.html
+  - name: Dead Co
+    url: http://127.0.0.1:8765/missing.html

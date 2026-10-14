@@ -1,0 +1,6 @@
+<html><body><h1>Careers</h1><div id="jobs">Loading...</div>
+<script>
+fetch('/api/jobs.json').then(r => r.json()).then(d => {
+  document.getElementById('jobs').innerText = d.results.length + ' jobs';
+});
+</script></body></html>

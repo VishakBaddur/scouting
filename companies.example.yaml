@@ -1,0 +1,22 @@
+# Each company needs a name and either:
+#   url:   any careers / job-board URL (the ATS is auto-detected), or
+#   ats + token: to skip detection
+companies:
+  # Greenhouse
+  - {name: Stripe,        url: "https://job-boards.greenhouse.io/stripe"}
+  - {name: Pinterest,     url: "https://job-boards.greenhouse.io/pinterest"}
+  - {name: Verkada,       url: "https://job-boards.greenhouse.io/verkada"}
+  - {name: Twilio,        url: "https://job-boards.greenhouse.io/twilio"}
+  - {name: ZipRecruiter,  url: "https://job-boards.greenhouse.io/ziprecruiter"}
+  # Lever
+  - {name: Palantir,      url: "https://jobs.lever.co/palantir"}
+  # Ashby
+  - {name: Notion,        url: "https://jobs.ashbyhq.com/notion"}
+  - {name: Crusoe,        url: "https://jobs.ashbyhq.com/crusoe"}
+  - {name: Whoop,         url: "https://jobs.ashbyhq.com/whoop"}
+  # SmartRecruiters
+  - {name: ServiceNow,    url: "https://jobs.smartrecruiters.com/ServiceNow"}
+  # Workday (JSON API behind a JavaScript site)
+  - {name: NVIDIA,        url: "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite"}
+  # Plain company careers page -> HTML / browser fallback
+  - {name: Rotto,         url: "https://www.rotto.com/careers"}
